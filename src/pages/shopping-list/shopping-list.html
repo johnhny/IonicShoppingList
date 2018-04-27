@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>My Flatastically Awesome Shopping List</ion-title>
+    <ion-title><small>Flatastically Awesome Shopping List</small></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,6 +16,23 @@
 <ion-content padding>
 
   <ion-list>
+
+    <ion-item *ngFor="let item of shoppingItems">
+      <ion-checkbox [(ngModel)]="item.checked"></ion-checkbox>
+      <ion-label>{{item.label}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-checkbox disabled="true"></ion-checkbox>
+      <ion-input placeholder="Type here to add one more ..." [(ngModel)]="newShoppingItem.label"></ion-input>
+      <button right *ngIf="newShoppingItem.label" (click)="addItem(newShoppingItem)">
+        <ion-icon>+</ion-icon>
+      </button>
+    </ion-item>
+
+    <button ion-button *ngIf="newShoppingItem.label" (click)="addItem(newShoppingItem)">
+      Add this item
+    </button>
 
 
   </ion-list>

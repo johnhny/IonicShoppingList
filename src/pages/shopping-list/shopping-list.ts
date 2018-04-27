@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the ShoppingListPage page.
@@ -17,6 +17,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ShoppingListPage {
 
+  shoppingItems = [] as ShoppingItem[];
+  newShoppingItem = {checked: false} as ShoppingItem;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -24,4 +27,14 @@ export class ShoppingListPage {
     console.log('ionViewDidLoad ShoppingListPage');
   }
 
+  addItem(itemToAdd: ShoppingItem){
+    this.shoppingItems.push(Object.assign({},itemToAdd));
+    this.newShoppingItem.label = "";
+  }
+
+}
+
+interface ShoppingItem {
+  label:String;
+  checked: boolean;
 }
