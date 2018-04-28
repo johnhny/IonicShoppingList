@@ -25,14 +25,11 @@
     <ion-item>
       <ion-checkbox disabled="true"></ion-checkbox>
       <ion-input placeholder="Type here to add one more ..." [(ngModel)]="newShoppingItem.label"></ion-input>
-      <button right *ngIf="newShoppingItem.label" (click)="addItem(newShoppingItem)">
-        <ion-icon>+</ion-icon>
+      <button *ngIf="newShoppingItem.label" icon-start ion-button item-end (click)="addItem(newShoppingItem)">
+        <ion-icon name="add"></ion-icon>
+         Add
       </button>
     </ion-item>
-
-    <button ion-button *ngIf="newShoppingItem.label" (click)="addItem(newShoppingItem)">
-      Add this item
-    </button>
 
 
   </ion-list>
