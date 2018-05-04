@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { HttpClientModule } from "@angular/common/http";
 import { BringmeisterProvider } from '../providers/bringmeister/bringmeister';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { BringmeisterProvider } from '../providers/bringmeister/bringmeister';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
