@@ -22,6 +22,7 @@
     <ion-item *ngFor="let item of shoppingItems" [ngClass]="{'itemDone': item.checked}">
       <ion-checkbox [(ngModel)]="item.checked"></ion-checkbox>
       <ion-label>{{item.label}}</ion-label>
+      <ion-label><small>{{item.priceEstimate}}</small></ion-label>
     </ion-item>
 
     <ion-item>
@@ -38,5 +39,8 @@
 
 
   </ion-list>
+  {{products?.products[0] | json }}
+  {{products?.products[0].price | json }}
+  {{products?.products[0].name | json }}
 
 </ion-content>
