@@ -41,11 +41,9 @@ export class ShoppingListPage {
 
   getPriceEstimateForItem(item: ShoppingItem){
     this.api.getProduct(item.label).subscribe((products : Product[])=>{
-      console.log(products.products[0].name)
-      if (products && products. products[0])
-        item.priceEstimate = products.products[0].name + " -> " + products.products[0].price + "€"
-      else
-        item.priceEstimate = "no price estimate found";
+      if (products && products.products.length > 0){
+        item.priceEstimates = products.products;
+      }
     });
   }
 

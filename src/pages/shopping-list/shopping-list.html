@@ -21,8 +21,26 @@
 
     <ion-item *ngFor="let item of shoppingItems" [ngClass]="{'itemDone': item.checked}">
       <ion-checkbox [(ngModel)]="item.checked"></ion-checkbox>
+
       <ion-label>{{item.label}}</ion-label>
-      <ion-label><small>{{item.priceEstimate}}</small></ion-label>
+      <ion-avatar *ngIf="item.priceEstimates && item.priceEstimates[0].name" item-end>
+        <img [src]="item.priceEstimates[0].imageUrl">
+      </ion-avatar>
+      <ion-label *ngIf="item.priceEstimates && item.priceEstimates[0].name">
+        <p>{{item.priceEstimates[0].name}}</p>
+        <p><b>{{item.priceEstimates[0].price}} €</b></p>
+      </ion-label>
+
+      <ion-spinner name="crescent" item-end *ngIf="!item.priceEstimates"></ion-spinner>
+      <ion-label name="crescent" item-end *ngIf="!item.priceEstimates" class="priceEstimate">
+        <p>Getting price estimate...</p>
+      </ion-label>
+
+      <!--<ion-label><small>{{item.priceEstimate}}</small></ion-label>-->
+      <!--<p *ngIf="item.priceEstimates">{{item.priceEstimates[0].name}}</p>-->
+      <!--<ion-avatar *ngIf="item.priceEstimates && item.priceEstimates[0].name" item-end>-->
+        <!--<img src="img/avatar-finn.png">-->
+      <!--</ion-avatar>-->
     </ion-item>
 
     <ion-item>
@@ -39,8 +57,5 @@
 
 
   </ion-list>
-  {{products?.products[0] | json }}
-  {{products?.products[0].price | json }}
-  {{products?.products[0].name | json }}
 
 </ion-content>
