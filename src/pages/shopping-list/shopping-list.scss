@@ -11,6 +11,10 @@ page-shopping-list {
   ion-label.priceEstimate.label {
     p {
       text-align: right;
+      font-size: 10px;
     }
+  }
+  .item.item-md .checkbox-md {
+    margin-right: 15px;
   }
 }

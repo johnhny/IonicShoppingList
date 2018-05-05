@@ -26,7 +26,7 @@
   <ion-list [reorder]="reorder" (ionItemReorder)="$event.applyTo(shoppingItems)">
 
     <ion-item *ngFor="let item of shoppingItems" [ngClass]="{'itemDone': item.checked}" reorder="true">
-      <!--<ion-checkbox [(ngModel)]="item.checked"></ion-checkbox>-->
+      <ion-checkbox [(ngModel)]="item.checked"></ion-checkbox>
 
       <ion-label>{{item.label}}</ion-label>
 
