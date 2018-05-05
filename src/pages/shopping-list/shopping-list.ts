@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {BringmeisterProvider} from "../../providers/bringmeister/bringmeister";
 
-class Product {
-}
-
 /**
  * Generated class for the ShoppingListPage page.
  *
@@ -23,7 +20,6 @@ export class ShoppingListPage {
 
   shoppingItems = [] as ShoppingItem[];
   newShoppingItem = {checked: false} as ShoppingItem;
-  private products: Product[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: BringmeisterProvider) {
   }
@@ -40,7 +36,7 @@ export class ShoppingListPage {
   }
 
   getPriceEstimateForItem(item: ShoppingItem){
-    this.api.getProduct(item.label).subscribe((products : Product[])=>{
+    this.api.getProduct(item.label).subscribe((products : any)=>{
       if (products && products.products.length > 0){
         item.priceEstimates = products.products;
       }
@@ -51,6 +47,6 @@ export class ShoppingListPage {
 
 interface ShoppingItem {
   label:String;
-  priceEstimate:String;
+  priceEstimates:any[];
   checked: boolean;
 }
