@@ -25,14 +25,14 @@ export class BringmeisterProvider {
     const requestOptions = {
       headers: new HttpHeaders({'X-Requested-With': 'ng'}),
     };
-    let corsWorkaround = 'http://cors-anywhere.herokuapp.com/';
+    let corsWorkaround = 'https://cors-anywhere.herokuapp.com/';
 
     let apiUrl = `http://berlin.bringmeister.de/fast-search/index.php?q=${searchTerm}`;
     let url = corsWorkaround + apiUrl;
 
     return  this.http.get(url, requestOptions)
       .map(products  => {
-        console.log(products)
+        console.log(products);
         return products;
       })
       .catch((err)=>{
