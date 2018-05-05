@@ -1,12 +1,16 @@
 page-shopping-list {
-    .itemDone {
-      ion-checkbox{
+  .itemDone {
+    ion-checkbox {
 
-      }
-      ion-label {
-        text-decoration: line-through;
-        color: color($colors, inactive);
-      }
-
+    }
+    ion-label {
+      text-decoration: line-through;
+      color: color($colors, inactive);
+    }
+  }
+  ion-label.priceEstimate.label {
+    p {
+      text-align: right;
+    }
   }
 }
