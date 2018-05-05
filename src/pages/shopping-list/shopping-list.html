@@ -6,20 +6,26 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>
-      <small>Flatastically Awesome Shopping List</small>
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar color="light">
+    <ion-title>Shopping List</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="reorder=true" *ngIf="!reorder">
+        Sort
+      </button>
+      <button ion-button (click)="reorder=false" *ngIf="reorder">
+        Done
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
 
-  <ion-list>
+  <ion-list [reorder]="reorder" (ionItemReorder)="$event.applyTo(shoppingItems)">
 
-    <ion-item *ngFor="let item of shoppingItems" [ngClass]="{'itemDone': item.checked}">
+    <ion-item *ngFor="let item of shoppingItems" [ngClass]="{'itemDone': item.checked}" reorder="true">
       <ion-checkbox [(ngModel)]="item.checked"></ion-checkbox>
 
       <ion-label>{{item.label}}</ion-label>
@@ -38,7 +44,9 @@
       </ion-label>
 
     </ion-item>
+  </ion-list>
 
+  <ion-list>
     <ion-item>
       <ion-checkbox disabled="true"></ion-checkbox>
       <ion-input placeholder="Type here to add one more ..."
@@ -50,8 +58,6 @@
         Add
       </button>
     </ion-item>
-
-
   </ion-list>
 
 </ion-content>
